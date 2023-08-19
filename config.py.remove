@@ -1,0 +1,5 @@
+TOKEN = ''
+
+ID_ARTHUR = '' # id do administrador do bot
+ID_NUVEM = '' # id do canal de backup do banco de dados e usos futuros
+NOME_BOT = '' # nome para ser exibido no título do backup do banco de dados
