@@ -517,7 +517,7 @@ class responderCaixinha:
         elif MENU('nao', getIdioma(self.userid)) in msg.text:
             bot.send_message(self.userid, MENU('ok_cancelado', getIdioma(self.userid)) , reply_markup=ReplyKeyboardRemove())
             return
-        elif MENU('anonimamente', getIdioma(self.userid)) in msg.text:
+        elif MENU('responder_anonimamente', getIdioma(self.userid)) in msg.text:
             self.anonimo = True
             msg = bot.send_message(self.userid, MENU('ok_autor_nao_vera_identidade') , reply_markup= ReplyKeyboardRemove())
             bot.register_next_step_handler(msg, self.receber_pergunta)
