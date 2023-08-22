@@ -267,7 +267,12 @@ def start(msg):
     try:
         cases[msg.text]()
     except Exception as e:
-        menu_principal(userid)
+        # se a mensagem inicia com um numeral, reponderCaixinha
+        if msg.text.isnumeric():
+            id_caixinha = msg.text.split()[0]
+            responderCaixinha(userid, int(id_caixinha))
+        else:
+            menu_principal(userid)
 
 
 
@@ -359,7 +364,7 @@ class criarCaixinha:
             io_buffer.seek(0)
             io_buffer.name = 'caixinha.png'
             link_start_caixinha = f"https://t.me/{bot.get_me().username}?start=id_caixinha_{id_caixinha_criada}"
-            bot.send_document(self.userid, io_buffer, caption=f" { MENU('imagem_da_caixinha', getIdioma(self.userid)) } \n '📦 { escape_markdown(self.titulo) }' \n\n 🔗 `{link_start_caixinha}`", parse_mode='MarkdownV2', reply_markup=markup_caixinha(id_caixinha_criada, getIdioma(self.userid)))
+            bot.send_document(self.userid, io_buffer, caption=f" { MENU('codigo_da_caixinha', getIdioma(self.userid), id_caixinha_criada) } \n\n '📦 { escape_markdown(self.titulo) }' \n\n 🔗 `{link_start_caixinha}`", parse_mode='MarkdownV2', reply_markup=markup_caixinha(id_caixinha_criada, getIdioma(self.userid)))
             
 
 class getCaixinhas:
@@ -493,7 +498,7 @@ class responderCaixinha:
         self.callback_query = None
 
         caixinha = self.db.getCaixinha(self.id_caixinha)
-        if caixinha == False:
+        if caixinha == False or caixinha == []:
             bot.send_message(self.userid, MENU('caixinha_nao_encontrada', getIdioma(self.userid), [self.id_caixinha]) )
             return
         
@@ -568,14 +573,19 @@ class responderCaixinha:
                 self.id_mensagem_criada,
                 autor
             )
-            bot.send_message(self.autor, text = texto, reply_markup = markup_responder_pergunta(self.id_caixinha), parse_mode='Markdown')
+            msg = bot.send_message(self.autor, text = texto, reply_markup = markup_responder_pergunta(self.id_caixinha), parse_mode='Markdown')
+            bot.delete_message(self.userid, msg.message_id)
             # enviar imagem:
             try:
                 enviarCartaoPergunta(self.autor, self.id_caixinha, self.id_mensagem_criada, texto)
             except Exception as e:
                 print('ERRO na notificação ao dono da caixinha: \n\n', e)
 
-        pass
+        else: 
+            msg = bot.send_message(self.userid, MENU('nao_entendi_confirme_novamente') , reply_markup = gerar_teclado([ 
+                self.sim, self.editar, self.cancelar
+            ]) )
+            bot.register_next_step_handler(msg, self.salvar_pergunta)
 
 class responderPergunta:
     def __init__(self, userid, id_caixinha):

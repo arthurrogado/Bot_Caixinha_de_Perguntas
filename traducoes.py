@@ -127,6 +127,11 @@ def MENU(menu_key, lang='pt', *params ):
             'en': '🖼️ Question box image',
             'es': '🖼️ Imagen de la caja de preguntas'
         },
+        'codigo_da_caixinha': {
+            'pt': '🔢 Código da caixinha: `{}`',
+            'en': '🔢 Question box code: `{}`',
+            'es': '🔢 Código de la caja de preguntas: `{}`'
+        },
         
         # getCaixinhas()
         'suas_caixinhas': {
