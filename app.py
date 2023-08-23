@@ -20,6 +20,8 @@ from gerador_imagem import *
 from make_backup import send_backup
 from traducoes import MENU
 
+from modulo_teste.teste import Teste
+
 bot = telebot.TeleBot(TOKEN)
 
 #####################
@@ -154,7 +156,7 @@ def markup_pagina_inicial(idioma = 'pt'):
     return gerar_markup([
         [MENU('criar_caixinha', idioma), 'criar_caixinha'],
         [MENU('minhas_caixinhas', idioma), 'minhas_caixinhas'],
-        [MENU('caixinhas_concluidas', idioma), 'caixinhas_concluidas'],
+        [MENU('responder_caixinha', idioma), 'responder_caixinha'],
         ['🌐 Idioma | Language 🗣️', 'mudar_idioma']
     ])
 
@@ -239,9 +241,12 @@ def start(msg):
         db.insertUser(userid, msg.chat.first_name)
 
     try:
-        if msg.text.split()[1].startswith('id_caixinha_'):
-            id_caixinha = msg.text.split()[1].split('_')[2] # ex: id_caixinha_1
-            responderCaixinha(userid, id_caixinha)
+        try: # só para não cair no Exception caso seja um /start
+            if msg.text.split()[1].startswith('id_caixinha_'):
+                id_caixinha = msg.text.split()[1].split('_')[2] # ex: id_caixinha_1
+                responderCaixinha(userid, id_caixinha)
+        except:
+            pass
     except Exception as e:
         # não foi passado nenhum parâmetro
         menu_principal(userid)
@@ -259,9 +264,11 @@ def start(msg):
         db.insertUser(userid, msg.chat.first_name)
 
     cases = {
+        "/caixinhas_concluidas": lambda: getCaixinhasConcluidas(userid),
         "/conhecer_bots": lambda: conhecer_bots(userid),
         "/doacao": lambda: doacao(userid),
         "/ajuda": lambda: ajuda(userid),
+        "/teste": lambda: Teste(bot, userid)
     }
 
     try:
@@ -289,6 +296,9 @@ def callback(call):
     elif call.data == 'minhas_caixinhas':
         getCaixinhas(userid)
         pass
+
+    elif call.data == 'responder_caixinha':
+        bot.send_message(userid, MENU('digite_id_caixinha', getIdioma(userid)))
     
     elif call.data == 'caixinhas_concluidas':
         getCaixinhasConcluidas(userid)
@@ -377,6 +387,7 @@ class getCaixinhas:
         self.enviar_caixinhas()
 
     def enviar_caixinhas(self):
+        print('**** ESTOU AQUI')
         bot.send_message(self.userid, MENU('suas_caixinhas', getIdioma(self.userid)), parse_mode='MarkdownV2')
         for caixinha in self.caixinhas:
             titulo = caixinha[1]

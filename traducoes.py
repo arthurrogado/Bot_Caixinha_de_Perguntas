@@ -59,10 +59,16 @@ def MENU(menu_key, lang='pt', *params ):
             'en': '📚 Create question box',
             'es': '📚 Crear caja de preguntas',
         },
+        
         "minhas_caixinhas": {
             "pt": "📦 Minhas caixinhas",
-            'en': '📦 My question boxes',
-            'es': '📦 Mis cajas de preguntas',
+            'en': "📦 My question boxes",
+            'es': "📦 Mis cajas de preguntas",
+        },
+        'responder_caixinha': {
+            'pt': '📝 Responder caixinha',
+            'en': '📝 Answer question box',
+            'es': '📝 Responder caja de preguntas',
         },
         'caixinhas_concluidas': {
             'pt': '✅ Caixinhas concluídas',
@@ -77,6 +83,12 @@ def MENU(menu_key, lang='pt', *params ):
             'pt': '✅ Idioma alterado para português 🇧🇷',
             'en': '✅ Language changed to english 🇺🇸',
             'es': '✅ Idioma cambiado a español 🇪🇸'
+        },
+
+        'digite_id_caixinha': {
+            'pt': '🆔 Digite o ID da caixinha',
+            'en': '🆔 Enter the question box ID',
+            'es': '🆔 Introduce el ID de la caja de preguntas'
         },
 
         # Markup Caixinha
@@ -135,9 +147,9 @@ def MENU(menu_key, lang='pt', *params ):
         
         # getCaixinhas()
         'suas_caixinhas': {
-            'pt': "Suas \n\n\n *CAIXINHAS* 📦: \n ⬇️⬇️⬇️",
-            'en': "Your \n\n\n *QUESTION BOXES* 📦: \n ⬇️⬇️⬇️",
-            'es': "Tus \n\n\n *CAJAS DE PREGUNTAS* 📦: \n ⬇️⬇️⬇️"
+            'pt': "Caixinhas concluídas: /caixinhas\_concluidas \n\n\n Suas *CAIXINHAS* 📦: \n ⬇️⬇️⬇️",
+            'en': "Completed question boxes: /caixinhas_concluidas \n\n\n Your *QUESTION BOXES* 📦: \n ⬇️⬇️⬇️",
+            'es': "Cajas de preguntas completadas: /caixinhas\_concluidas \n\n\n Tus *CAJAS DE PREGUNTAS* 📦: \n ⬇️⬇️⬇️"
         },
 
         ## responderCAixinha
