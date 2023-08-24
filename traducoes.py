@@ -159,9 +159,9 @@ def MENU(menu_key, lang='pt', *params ):
             'es': '❌ Caja de preguntas {} no encontrada'            
         },
         'ola_bem_vindo_caixinhas': {
-            'pt': "📦 OLÁ! BEM VINDO(A) ÀS CAIXINHAS! \n Quer perguntar na caixinha do autor: {} ? \n\n * 📦 '{}' *",
-            'en': "📦 HELLO! WELCOME TO THE QUESTION BOXES! \n Do you want to ask in the author's box: {} ? \n\n * 📦 '{}' *",
-            'es': "📦 ¡HOLA! ¡BIENVENIDO(A) A LAS CAJAS DE PREGUNTAS! \n ¿Quieres preguntar en la caja del autor: {} ? \n\n * 📦 '{}' *"
+            'pt': "👋 OLÁ! BEM VINDO(A) ÀS CAIXINHAS! \n\n Quer perguntar na caixinha do autor: {} ? \n\n * 📦 '{}' *",
+            'en': "👋 HELLO! WELCOME TO THE QUESTION BOXES! \n\n Do you want to ask in the author's box: {} ? \n\n * 📦 '{}' *",
+            'es': "👋 ¡HOLA! ¡BIENVENIDO(A) A LAS CAJAS DE PREGUNTAS! \n\n ¿Quieres preguntar en la caja del autor: {} ? \n\n * 📦 '{}' *"
         },
         'envie_sua_pergunta': {
             'pt': '✅ Ok! Vamos lá! \n\n Envie sua pergunta:',

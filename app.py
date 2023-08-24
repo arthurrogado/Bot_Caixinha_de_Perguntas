@@ -240,12 +240,15 @@ def start(msg):
     if db.checkUserExists(userid) == False:
         db.insertUser(userid, msg.chat.first_name)
 
+
     try:
+        print("START")
         try: # só para não cair no Exception caso seja um /start
             if msg.text.split()[1].startswith('id_caixinha_'):
                 id_caixinha = msg.text.split()[1].split('_')[2] # ex: id_caixinha_1
                 responderCaixinha(userid, id_caixinha)
         except:
+            menu_principal(userid)
             pass
     except Exception as e:
         # não foi passado nenhum parâmetro
