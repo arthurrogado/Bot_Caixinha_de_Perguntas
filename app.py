@@ -242,7 +242,6 @@ def start(msg):
 
 
     try:
-        print("START")
         try: # só para não cair no Exception caso seja um /start
             if msg.text.split()[1].startswith('id_caixinha_'):
                 id_caixinha = msg.text.split()[1].split('_')[2] # ex: id_caixinha_1
