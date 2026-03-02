@@ -11,7 +11,6 @@ from telebot.types import (
     BotCommandScopeChat
 )
 
-
 import io
 
 from db import DB
@@ -340,10 +339,6 @@ def callback(call):
 
 
 
-
-
-
-
 # -------- CLASSES escopos -----------
 
 class criarCaixinha:
@@ -389,7 +384,6 @@ class getCaixinhas:
         self.enviar_caixinhas()
 
     def enviar_caixinhas(self):
-        print('**** ESTOU AQUI')
         bot.send_message(self.userid, MENU('suas_caixinhas', getIdioma(self.userid)), parse_mode='MarkdownV2')
         for caixinha in self.caixinhas:
             titulo = caixinha[1]
