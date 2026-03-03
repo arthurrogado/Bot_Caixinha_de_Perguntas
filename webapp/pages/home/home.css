@@ -1,0 +1,37 @@
+.option {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    background-color: var(--tg-theme-secondary-bg-color);
+    border-radius: 10px;
+    margin: 10px 0 0 0;
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid #00000000;
+    transition: border .2s ease-in-out;
+}
+
+.option:hover{
+    filter: brightness(1.05);
+    border: 1px solid var(--tg-theme-link-color);
+}
+
+.option-body {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    background-color: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
+    min-width: 50px; max-width: 50px;
+    min-height: 50px; max-height: 50px;
+    margin-right: 5px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}

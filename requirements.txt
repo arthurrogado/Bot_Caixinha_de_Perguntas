@@ -1,2 +1,10 @@
-pytelegrambotapi
-pillow
+pyTelegramBotAPI>=4.14.0
+Pillow>=10.0.0
+playwright>=1.40.0
+
+# Opcional: MariaDB backend
+# mysql-connector-python>=8.0.0
+
+# Opcional: Pyrogram (bot secundário)
+# Pyrogram>=2.0.0
+# TgCrypto>=1.2.0
