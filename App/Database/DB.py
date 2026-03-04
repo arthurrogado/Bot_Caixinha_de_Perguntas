@@ -32,7 +32,7 @@ except ImportError:
 
 def _get_mariadb_config():
     """Importa configuração do MariaDB sob demanda."""
-    from App.Config.config import MARIADB_HOST, MARIADB_PORT, MARIADB_USER, MARIADB_PASSWORD, MARIADB_DATABASE
+    from App.Config.secrets import MARIADB_HOST, MARIADB_PORT, MARIADB_USER, MARIADB_PASSWORD, MARIADB_DATABASE
     return {
         'host': MARIADB_HOST,
         'port': MARIADB_PORT,
