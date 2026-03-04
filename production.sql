@@ -1,20 +1,14 @@
 -- ============================================================
 -- production.sql — exportado de production_database.db
 -- gerado em 2026-03-04 18:01:34
--- compatível com MariaDB/MySQL e SQLite
+-- Execute APÓS architecture_mariadb.sql
 -- ============================================================
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ── caixinhas ─────────────────────────────────────────────────────
-CREATE TABLE IF NOT EXISTS `caixinhas` (
-  `id` INT AUTO_INCREMENT PRIMARY KEY,
-  `titulo` TEXT,
-  `id_usuario` BIGINT,
-  `concluida` INT DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
+-- publica não listada → assume DEFAULT 0 (privada) definido no schema
 INSERT INTO `caixinhas` (`id`, `titulo`, `id_usuario`, `concluida`) VALUES
   (184, 'TESTANDO!', 850446631, 0),
   (185, 'testando', 850446631, 1),
@@ -232,16 +226,9 @@ INSERT INTO `caixinhas` (`id`, `titulo`, `id_usuario`, `concluida`) VALUES
   (397, 'Rotina', 6973153129, 0),
   (398, 'Rotina', 6973153129, 0);
 
--- ── perguntas ─────────────────────────────────────────────────────
-CREATE TABLE IF NOT EXISTS `perguntas` (
-  `id` INT AUTO_INCREMENT PRIMARY KEY,
-  `id_caixinha` BIGINT,
-  `id_usuario_autor` BIGINT,
-  `pergunta` TEXT,
-  `respondida` INT DEFAULT 0,
-  `anonima` INT DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+ALTER TABLE `caixinhas` AUTO_INCREMENT = 399;
 
+-- ── perguntas ─────────────────────────────────────────────────────
 INSERT INTO `perguntas` (`id`, `id_caixinha`, `id_usuario_autor`, `pergunta`, `respondida`, `anonima`) VALUES
   (246, 185, 850446631, 'testando apenas?!', 0, 0),
   (247, 184, 850446631, 'opa', 0, 1),
@@ -277,15 +264,11 @@ INSERT INTO `perguntas` (`id`, `id_caixinha`, `id_usuario_autor`, `pergunta`, `r
   (277, 377, 6457767521, '/start id_caixinha_377', 0, 1),
   (278, 378, 5002504012, 'Oi?', 0, 0);
 
--- ── usuarios ─────────────────────────────────────────────────────
-CREATE TABLE IF NOT EXISTS `usuarios` (
-  `id` INT AUTO_INCREMENT PRIMARY KEY,
-  `nome` TEXT,
-  `idioma` TEXT DEFAULT 'pt'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+ALTER TABLE `perguntas` AUTO_INCREMENT = 279;
 
+-- ── usuarios ─────────────────────────────────────────────────────
 INSERT INTO `usuarios` (`id`, `nome`, `idioma`) VALUES
-  (-1002050424705, NULL, 'pt'),
+  (-1002050424705, '', 'pt'),
   (7021147, 'AlejandroCM', 'es'),
   (15849645, 'Key ㅤㅤㅤ', 'es'),
   (19259042, 'Fran', 'pt'),
