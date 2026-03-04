@@ -317,7 +317,7 @@ class ResponderCaixinha(BaseComponent):
             buffer.name = 'cartao.png'
             buffer.seek(0)
 
-            self.bot.send_photo(
+            self.bot.send_document(
                 userid, buffer,
                 caption=caption,
                 parse_mode='HTML',

@@ -89,7 +89,7 @@ class MinhasCaixinhas(BaseComponent):
                 buffer.seek(0)
 
                 caption = f"📦 <b>{titulo}</b>\n\n🔗 <code>{link}</code>"
-                self.bot.send_photo(
+                self.bot.send_document(
                     self.userid, buffer,
                     caption=caption,
                     parse_mode='HTML',

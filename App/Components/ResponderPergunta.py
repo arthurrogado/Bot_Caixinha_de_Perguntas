@@ -111,7 +111,7 @@ class ResponderPergunta(BaseComponent):
             img.save(buf, format='PNG')
             buf.name = 'pergunta.png'
             buf.seek(0)
-            self.bot.send_photo(self.userid, buf, caption=caption, parse_mode='HTML', reply_markup=markup)
+            self.bot.send_document(self.userid, buf, caption=caption, parse_mode='HTML', reply_markup=markup)
         except Exception:
             self.bot.send_message(self.userid, caption, parse_mode='HTML', reply_markup=markup)
 

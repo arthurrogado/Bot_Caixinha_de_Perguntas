@@ -209,7 +209,7 @@ class CriarCaixinha(BaseComponent):
         )
 
         if buffer:
-            self.bot.send_photo(
+            self.bot.send_document(
                 self.userid, buffer,
                 caption=caption,
                 parse_mode='HTML',
