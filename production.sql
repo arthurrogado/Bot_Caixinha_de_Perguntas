@@ -8,7 +8,6 @@ SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ── caixinhas ─────────────────────────────────────────────────────
-DROP TABLE IF EXISTS `caixinhas`;
 CREATE TABLE IF NOT EXISTS `caixinhas` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `titulo` TEXT,
@@ -234,7 +233,6 @@ INSERT INTO `caixinhas` (`id`, `titulo`, `id_usuario`, `concluida`) VALUES
   (398, 'Rotina', 6973153129, 0);
 
 -- ── perguntas ─────────────────────────────────────────────────────
-DROP TABLE IF EXISTS `perguntas`;
 CREATE TABLE IF NOT EXISTS `perguntas` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `id_caixinha` BIGINT,
@@ -280,7 +278,6 @@ INSERT INTO `perguntas` (`id`, `id_caixinha`, `id_usuario_autor`, `pergunta`, `r
   (278, 378, 5002504012, 'Oi?', 0, 0);
 
 -- ── usuarios ─────────────────────────────────────────────────────
-DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `nome` TEXT,
